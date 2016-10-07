@@ -1,10 +1,10 @@
 <template>
-
-</template>
   <div>
     <link-form />
     <all-links />
   </div>
+</template>
+
 <script>
 import LinkForm from './LinkForm.vue'
 import AllLinks from './AllLinks.vue'

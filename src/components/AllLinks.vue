@@ -1,6 +1,6 @@
 <template>
-  <div id="test">
-    <div class="column" v-for="(link, index) in links">
+  <div class="columns is-multiline is-mobile">
+    <div class="column is-4 is-one-quarter" v-for="(link, index) in links">
       <div class="box">
         <article class="media">
           <div class="media-content">

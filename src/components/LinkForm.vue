@@ -1,19 +1,21 @@
 <template>
-  <div class="column is-half is-offset-one-quarter">
-    <form>
-      <label class="label">Link title</label>
-      <p class="control">
-        <input class="input" type="text" placeholder="Link title" :value="title" @input="updateTitle">
-      </p>
-      <label class="label">Additional notes</label>
-      <p class="control">
-        <textarea class="textarea" placeholder="Notes" :value="notes" @input="updateNotes"></textarea>
-      </p>
-      <p class="control">
-        <button class="button is-primary" @click="saveLink">Save</button>
-        <button class="button is-link">Cancel</button>
-      </p>
-    </form>
+  <div class="columns">
+    <div class="column is-half is-offset-one-quarter">
+      <form>
+        <label class="label">Link title</label>
+        <p class="control">
+          <input class="input" type="text" placeholder="Link title" :value="title" @input="updateTitle">
+        </p>
+        <label class="label">Additional notes</label>
+        <p class="control">
+          <textarea class="textarea" placeholder="Notes" :value="notes" @input="updateNotes"></textarea>
+        </p>
+        <p class="control">
+          <button class="button is-primary" @click="saveLink">Save</button>
+          <button class="button is-link">Cancel</button>
+        </p>
+      </form>
+    </div>
   </div>
 </template>
 
