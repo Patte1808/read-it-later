@@ -12,13 +12,10 @@
         <nav class="level">
           <div class="level-left">
             <a class="level-item">
-              <span class="icon is-small"><i class="fa fa-reply"></i></span>
+              <span class="icon is-small"><i class="fa fa-pencil"></i></span>
             </a>
-            <a class="level-item">
-              <span class="icon is-small"><i class="fa fa-retweet"></i></span>
-            </a>
-            <a class="level-item">
-              <span class="icon is-small"><i class="fa fa-heart"></i></span>
+            <a class="level-item" @click="deleteLink(id)">
+              <span class="icon is-small"><i class="fa fa-trash"></i></span>
             </a>
           </div>
         </nav>
@@ -31,9 +28,11 @@
 import marked from 'marked'
 
 export default {
-  props: ['link'],
+  props: ['link', 'id'],
   methods: {
-
+    deleteLink (id) {
+      this.$store.dispatch('deleteLink', id)
+    }
   },
   computed: {
     links () {

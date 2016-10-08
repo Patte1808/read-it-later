@@ -21,6 +21,9 @@ export default new Vuex.Store({
     SAVE_LINK (state) {
       state.links.push(state.newLink)
       state.newLink = {title: '', url: '', notes: ''}
+    },
+    DELETE_LINK (state, id) {
+      state.links.splice(id, 1)
     }
   },
   actions: {
@@ -35,6 +38,9 @@ export default new Vuex.Store({
     },
     saveLink ({commit}) {
       commit('SAVE_LINK')
+    },
+    deleteLink ({commit}, id) {
+      commit('DELETE_LINK', id)
     }
   },
   getters: {
