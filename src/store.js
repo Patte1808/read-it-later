@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import linkService from './services/linkService'
 
 Vue.use(Vuex)
 
@@ -9,6 +10,9 @@ export default new Vuex.Store({
     links: []
   },
   mutations: {
+    FETCH_LINKS (state, links) {
+      state.links = links
+    },
     UPDATE_LINK_TITLE (state, title) {
       state.newLink.title = title
     },
@@ -36,6 +40,11 @@ export default new Vuex.Store({
     }
   },
   actions: {
+    fetchLinks ({commit}) {
+      return linkService.fetchAll()
+        .then((response) => commit('FETCH_LINKS', response))
+        .catch((error) => commit('FETCH_LINKS', error))
+    },
     updateLinkTitle ({commit}, title) {
       commit('UPDATE_LINK_TITLE', title)
     },

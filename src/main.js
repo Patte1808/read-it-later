@@ -6,8 +6,10 @@ import store from './store'
 import VueRouter from 'vue-router'
 import LinksContainer from './components/LinksContainer.vue'
 import { sync } from 'vuex-router-sync'
+import VueResource from 'vue-resource'
 
 Vue.use(VueRouter)
+Vue.use(VueResource)
 
 const router = new VueRouter({
   mode: 'history',
