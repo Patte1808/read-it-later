@@ -11,7 +11,7 @@
         </div>
         <nav class="level">
           <div class="level-left">
-            <a class="level-item">
+            <a class="level-item" @click="editLink(id)">
               <span class="icon is-small"><i class="fa fa-pencil"></i></span>
             </a>
             <a class="level-item" @click="deleteLink(id)">
@@ -30,6 +30,9 @@ import marked from 'marked'
 export default {
   props: ['link', 'id'],
   methods: {
+    editLink (id) {
+      this.$store.dispatch('editLink', id)
+    },
     deleteLink (id) {
       this.$store.dispatch('deleteLink', id)
     }

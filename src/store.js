@@ -5,7 +5,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    newLink: {title: '', url: '', notes: ''},
+    newLink: {id: null, title: '', url: '', notes: ''},
     links: []
   },
   mutations: {
@@ -19,11 +19,20 @@ export default new Vuex.Store({
       state.newLink.notes = notes
     },
     SAVE_LINK (state) {
-      state.links.push(state.newLink)
-      state.newLink = {title: '', url: '', notes: ''}
+      if (state.newLink.id === null) {
+        state.newLink.id = state.links.length - 1
+        state.links.push(state.newLink)
+      } else {
+        state.links[state.newLink.id] = state.newLink
+      }
+
+      state.newLink = {id: null, title: '', url: '', notes: ''}
     },
     DELETE_LINK (state, id) {
       state.links.splice(id, 1)
+    },
+    EDIT_LINK (state, id) {
+      state.newLink = state.links[id]
     }
   },
   actions: {
@@ -41,6 +50,9 @@ export default new Vuex.Store({
     },
     deleteLink ({commit}, id) {
       commit('DELETE_LINK', id)
+    },
+    editLink ({commit}, id) {
+      commit('EDIT_LINK', id)
     }
   },
   getters: {
