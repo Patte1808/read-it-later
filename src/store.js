@@ -29,7 +29,7 @@ export default new Vuex.Store({
       } else {
         state.links[state.newLink.id] = state.newLink
       }
-
+      linkService.postLink(state.newLink)
       state.newLink = {id: null, title: '', url: '', notes: ''}
     },
     DELETE_LINK (state, id) {
