@@ -24,11 +24,19 @@ export default new Vuex.Store({
     },
     SAVE_LINK (state) {
       if (state.newLink.id === null) {
-        state.newLink.id = state.links.length - 1
-        state.links.push(state.newLink)
+        linkService.postLink(state.newLink)
+          .then((response) => state.links.push(response))
+      } else {
+        linkService.updateLink(state.newLink)
+          .then((response) => {
+            for (let i = 0; i < state.links.length - 1; i++) {
+              if (state.links[i] === response.id) {
+                state.links[i] = response
+              }
+            }
+          })
       }
 
-      linkService.postLink(state.newLink)
       state.newLink = {id: null, title: '', url: '', notes: ''}
     },
     DELETE_LINK (state, id) {
@@ -38,7 +46,9 @@ export default new Vuex.Store({
       })
     },
     EDIT_LINK (state, id) {
-      state.newLink = state.links[id]
+      state.newLink = state.links.filter((obj) => {
+        return parseInt(obj.id) === parseInt(id)
+      })[0]
     }
   },
   actions: {

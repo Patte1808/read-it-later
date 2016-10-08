@@ -17,5 +17,10 @@ export default {
     return Vue.http.delete(BASE_URL + '/' + request, request)
       .then((response) => Promise.resolve(response.data))
       .catch((error) => Promise.reject(error))
+  },
+  updateLink (request) {
+    return Vue.http.put(BASE_URL + '/' + request.id, request)
+      .then((response) => Promise.resolve(response.data))
+      .catch((error) => Promise.reject(error))
   }
 }

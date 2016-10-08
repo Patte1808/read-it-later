@@ -11,10 +11,10 @@
         </div>
         <nav class="level">
           <div class="level-left">
-            <a class="level-item" @click="editLink(id)">
+            <a class="level-item" @click="editLink(link.id)">
               <span class="icon is-small"><i class="fa fa-pencil"></i></span>
             </a>
-            <a class="level-item" @click="deleteLink(id)">
+            <a class="level-item" @click="deleteLink(link.id)">
               <span class="icon is-small"><i class="fa fa-trash"></i></span>
             </a>
           </div>
