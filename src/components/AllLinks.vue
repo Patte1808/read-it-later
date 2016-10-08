@@ -1,7 +1,7 @@
 <template>
   <div class="columns is-multiline is-mobile">
     <div class="column is-4 is-one-quarter" v-for="(link, index) in links">
-      <link-item :link="link" :id="index"/>
+      <link-item :link="link" :id="link.id"/>
     </div>
   </div>
 </template>

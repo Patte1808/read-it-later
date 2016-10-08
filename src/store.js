@@ -26,14 +26,16 @@ export default new Vuex.Store({
       if (state.newLink.id === null) {
         state.newLink.id = state.links.length - 1
         state.links.push(state.newLink)
-      } else {
-        state.links[state.newLink.id] = state.newLink
       }
+
       linkService.postLink(state.newLink)
       state.newLink = {id: null, title: '', url: '', notes: ''}
     },
     DELETE_LINK (state, id) {
-      state.links.splice(id, 1)
+      console.log(id)
+      state.links = state.links.filter((obj) => {
+        return parseInt(obj.id) !== parseInt(id)
+      })
     },
     EDIT_LINK (state, id) {
       state.newLink = state.links[id]
@@ -58,7 +60,9 @@ export default new Vuex.Store({
       commit('SAVE_LINK')
     },
     deleteLink ({commit}, id) {
-      commit('DELETE_LINK', id)
+      return linkService.deleteLink(id)
+              .then((response) => commit('DELETE_LINK', response.id))
+              .catch((error) => commit('DELETE_LINK', error))
     },
     editLink ({commit}, id) {
       commit('EDIT_LINK', id)
