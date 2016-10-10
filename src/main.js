@@ -17,7 +17,8 @@ const router = new VueRouter({
   base: __dirname,
   routes: [
     { path: '/', component: LinksContainer },
-    { path: '/login', component: Login }
+    { path: '/login', component: Login },
+    { path: '*', redirect: '/login' }
   ]
 })
 

@@ -6,10 +6,11 @@
         <p class="control">
           <input class="input" type="text" placeholder="Link title" :value="title" @input="updateTitle">
         </p>
-        <label class="label">Additional notes</label>
-        <p class="control">
-          <textarea class="textarea" placeholder="Notes" :value="notes" @input="updateNotes"></textarea>
-        </p>
+        <div class="control is-grouped">
+          <p class="control is-expanded">
+            <textarea class="textarea" placeholder="Notes" :value="notes" @input="updateNotes"></textarea>
+          </p>
+        </div>
         <p class="control">
           <button class="button is-primary" @click="saveLink">Save</button>
           <button class="button is-link">Cancel</button>
