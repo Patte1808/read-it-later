@@ -1,10 +1,11 @@
 import Vue from 'vue'
+import authService from './authService'
 
 const BASE_URL = 'http://localhost:3000/links'
 
 export default {
   fetchAll () {
-    return Vue.http.get(BASE_URL)
+    return Vue.http.get(BASE_URL, { headers: authService.getAuthHeader() })
       .then((response) => Promise.resolve(response.data))
       .catch((error) => Promise.reject(error))
   },

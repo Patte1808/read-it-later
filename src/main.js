@@ -7,6 +7,7 @@ import VueRouter from 'vue-router'
 import LinksContainer from './components/LinksContainer.vue'
 import { sync } from 'vuex-router-sync'
 import VueResource from 'vue-resource'
+import Login from './components/Login.vue'
 
 Vue.use(VueRouter)
 Vue.use(VueResource)
@@ -15,7 +16,8 @@ const router = new VueRouter({
   mode: 'history',
   base: __dirname,
   routes: [
-    { path: '/', component: LinksContainer }
+    { path: '/', component: LinksContainer },
+    { path: '/login', component: Login }
   ]
 })
 
