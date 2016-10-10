@@ -1,8 +1,22 @@
 <template>
-  <div>
-    <input type="text" v-model="credentials.email" />
-    <input type="password" v-model="credentials.password" />
-    <button @click="submit">Login</button>
+  <div class="columns">
+    <div class="column is-half is-offset-one-quarter">
+      <form>
+        <p class="control has-icon">
+          <input class="input" type="email" placeholder="Email" v-model="credentials.email">
+          <i class="fa fa-envelope"></i>
+        </p>
+        <p class="control has-icon">
+          <input class="input" type="password" placeholder="Password" v-model="credentials.password">
+          <i class="fa fa-lock"></i>
+        </p>
+        <p class="control">
+          <button class="button is-success" @click="submit">
+            Login
+          </button>
+        </p>
+      </form>
+    </div>
   </div>
 </template>
 
