@@ -6,17 +6,21 @@ export default {
   user: {
     authenticated: false
   },
-  login (credentials) {
+  login (context, credentials) {
     Vue.http.post(BASE_URL, credentials)
       .then(response => {
         localStorage.setItem('id_token', response.data.auth_token)
 
         this.user.authenticated = true
+        context.$router.go('/links')
       })
   },
   getAuthHeader () {
     return {
       'Authorization': 'Bearer ' + localStorage.getItem('id_token')
     }
+  },
+  isAuthenticated () {
+    return (localStorage.getItem('id_token') !== null)
   }
 }

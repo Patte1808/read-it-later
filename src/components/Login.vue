@@ -41,7 +41,7 @@ export default {
         password: this.credentials.password
       }
 
-      authService.login(credentials)
+      authService.login(this, credentials)
     }
   },
   computed: {

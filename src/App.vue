@@ -5,9 +5,12 @@
 </template>
 
 <script>
+import authService from './services/authService'
 export default {
   created () {
-    this.$store.dispatch('fetchLinks')
+    if (authService.isAuthenticated()) {
+      this.$store.dispatch('fetchLinks')
+    }
   }
 }
 </script>
